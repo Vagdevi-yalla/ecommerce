@@ -1,10 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-const authRoute = require("./routes/authRoute");
-const productRouter = require("./routes/productRoute"); // Import product router
 
+// Load environment variables from .env file
 dotenv.config();
+
 const app = express();
 
 // Connect to MongoDB
@@ -20,12 +20,16 @@ mongoose
 app.use(express.json());
 
 // Routes
+const authRoute = require("./routes/authRoute");
+const productRouter = require("./routes/productRoute");
+const cartRoute = require("./routes/cartRoute");
+
+// Mounting routes
 app.use("/", authRoute);
-
-// Product routes
 app.use("/products", productRouter);
+app.use("/cart", cartRoute);
 
-// Health check endpoint
+// Health check route
 app.get("/health", (req, res) => {
   const dbStatus =
     mongoose.connection.readyState === 1 ? "connected" : "disconnected";
