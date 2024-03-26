@@ -2,31 +2,37 @@ const Product = require("../models/productModel");
 
 const createProduct = async (req, res) => {
   const {
-    productName,
-    category,
+    name,
+    images,
+    rating,
+    productCategory,
+    company,
     description,
-    price,
-    image,
-    quantity,
+    color,
+    availability,
     featured,
+    price,
   } = req.body;
 
   try {
     const newProduct = new Product({
-      productName: productName,
-      category: category,
-      description: description,
-      price: price,
-      image: image,
-      quantity: quantity,
-      featured: featured,
+      name,
+      images,
+      rating,
+      productCategory,
+      company,
+      description,
+      color,
+      availability,
+      featured,
+      price,
     });
 
     await newProduct.save();
-    res.json("Product added successfully");
+    res.json({ message: "Product added successfully", product: newProduct });
   } catch (error) {
-    console.error("Error adding product:", error);
-    res.status(500).json("Error adding product");
+    console.error("Error adding product:", error.message);
+    res.status(500).json({ error: "Error adding product" });
   }
 };
 
@@ -35,8 +41,8 @@ const getAllProducts = async (req, res) => {
     const products = await Product.find();
     res.json(products);
   } catch (error) {
-    console.error("Error fetching products:", error);
-    res.status(500).json("Error fetching products");
+    console.error("Error fetching products:", error.message);
+    res.status(500).json({ error: "Error fetching products" });
   }
 };
 
