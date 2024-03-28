@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./App.css";
+import TopHeader from "./Components/TopHeader/TopHeader";
+import Main from "./Components/Main/Main";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -20,6 +23,9 @@ const App = () => {
   return (
     <>
       <div>
+        <TopHeader />
+        <Main />
+        <button>press</button>
         <h1>vagdevi's products</h1>
         <ul>
           {products.map((product) => (
@@ -29,7 +35,7 @@ const App = () => {
               <div>Price: {product.price}</div>
               <div>
                 {product.images.map((url, index) => (
-                  <img key={index} src={url} alt={`Image ${index}`} />
+                  <img key={index} src={url} alt="random" />
                 ))}
               </div>
             </li>

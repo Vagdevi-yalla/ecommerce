@@ -1,0 +1,24 @@
+.Discount {
+  background: linear-gradient(to right, #7286b4, #e794ce);
+  display: flex;
+  margin-top: 8vh;
+  align-items: center;
+  justify-content: space-between;
+  height: 30vh;
+  width: 100%;
+  border-radius: 3vh;
+}
+
+.Discount h1 {
+  color: #2e0052;
+  padding-left: 5vw;
+}
+
+.Discount div img {
+  position: absolute;
+
+  height: 39vh;
+  width: 26vw;
+  margin-top: -12%;
+  margin-left: -25%;
+}

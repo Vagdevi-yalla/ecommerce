@@ -1,0 +1,54 @@
+.TopHeader {
+  background-color: #2e0052;
+  padding: 1vh 2vw; /* Adjusted padding */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.phoneSection {
+  display: flex;
+  align-items: center;
+}
+
+.phoneSection img {
+  height: 3vh;
+  width: auto; /* Allow width to adjust based on height */
+  margin-right: 1vw;
+}
+
+.discountText {
+  margin-right: 2vw; /* Adjusted margin */
+}
+
+.discountText span {
+  font-size: large; /* Adjusted font size */
+  margin: 0 1vw; /* Adjusted margin */
+}
+
+.TopHeader input {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Center text on small screens */
+
+  .TopHeader img,
+  p {
+    display: none;
+  }
+
+  .TopHeader input {
+    display: block;
+    padding: 1vh 28vw;
+
+    border-radius: 2vw;
+    border: none;
+    margin: 0 2vw;
+  }
+  .TopHeader input::placeholder {
+    margin-right: 5vw;
+  }
+}

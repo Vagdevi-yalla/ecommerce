@@ -1,50 +1,28 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const validator = require("validator");
 
-const Schema = mongoose.Schema;
-
-const cartSchema = new Schema({
-  userId: {
+const cartItemSchema = mongoose.Schema({
+  product: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    ref: "Product",
+    required: [true, "A cart should have a productId"],
   },
-  items: [
-    {
-      productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-        required: true,
-      },
-      productName: {
-        type: String,
-        required: true,
-      },
-      description: {
-        type: String,
-      },
-      image: {
-        type: String,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-      price: {
-        type: Number,
-        required: true,
-      },
-    },
-  ],
-  totalPrice: {
+
+  quantity: {
     type: Number,
-    required: true,
-    default: 0,
-  },
-  totalQuantity: {
-    type: Number,
-    required: true,
-    default: 0,
+    default: 1,
   },
 });
 
-module.exports = mongoose.model("Cart", cartSchema);
+const cartSchema = mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: [true, "A Cart should have a User Id binding"],
+  },
+  items: [cartItemSchema],
+});
+
+const Cart = mongoose.model("Cart", cartSchema);
+module.exports = Cart;

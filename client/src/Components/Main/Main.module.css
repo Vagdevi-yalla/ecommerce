@@ -1,0 +1,20 @@
+.Main {
+  color: #fff;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
